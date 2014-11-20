@@ -1,18 +1,14 @@
 package com.example.technicise.customlinechart;
 
-import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
-
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -28,6 +24,7 @@ public class LineChartActivity extends ActionBarActivity {
         setContentView(R.layout.activity_line_chart);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
+
         }
     }
 
@@ -48,7 +45,7 @@ public class LineChartActivity extends ActionBarActivity {
         private boolean hasAxesNames = true;
         private boolean hasLines = true;
         private boolean hasPoints = true;
-        private ValueShape shape = ValueShape.CIRCLE;
+        private ValueShape shape = ValueShape.SQUARE;
         private boolean isFilled = false;
         private boolean hasLabels = false;
         private boolean isCubic = false;
@@ -68,7 +65,8 @@ public class LineChartActivity extends ActionBarActivity {
             // Generate some randome values.
             generateValues();
 
-            generateData();
+           // generateData();
+            toggleLabels();
 
             // Disable viewpirt recalculations, see toggleCubic() method for more info.
             chart.setViewportCalculationEnabled(false);
@@ -180,7 +178,7 @@ public class LineChartActivity extends ActionBarActivity {
             hasAxesNames = true;
             hasLines = true;
             hasPoints = true;
-            shape = ValueShape.CIRCLE;
+            shape = ValueShape.SQUARE;
             isFilled = false;
             hasLabels = false;
             isCubic = false;
@@ -210,8 +208,10 @@ public class LineChartActivity extends ActionBarActivity {
                 }
 
                 Line line = new Line(values);
-                line.setColor(Utils.COLORS[i]);
+               // line.setColor(Utils.COLORS[i]);
+                line.setColor(Color.parseColor("#DEDEDE"));
                 line.setShape(shape);
+                line.setStrokeWidth(5);
                 line.setCubic(isCubic);
                 line.setFilled(isFilled);
                 line.setHasLabels(hasLabels);
@@ -219,6 +219,7 @@ public class LineChartActivity extends ActionBarActivity {
                 line.setHasLines(hasLines);
                 line.setHasPoints(hasPoints);
                 lines.add(line);
+
             }
 
             data = new LineChartData(lines);
@@ -345,6 +346,9 @@ public class LineChartActivity extends ActionBarActivity {
             if (hasLabels) {
                 hasLabelForSelected = false;
                 chart.setValueSelectionEnabled(hasLabelForSelected);
+
+
+
             }
 
             generateData();

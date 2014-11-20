@@ -82,11 +82,11 @@ public class MainActivity extends ActionBarActivity  {
                     intent = new Intent(getActivity(), LineChartActivity.class);
                     startActivity(intent);
                     break;
-                case 1:
-                    // Column Chart;
-                    intent = new Intent(getActivity(), ColumnChartActivity.class);
-                    startActivity(intent);
-                    break;
+//                case 1:
+//                    // Column Chart;
+//                    intent = new Intent(getActivity(), ColumnChartActivity.class);
+//                    startActivity(intent);
+//                    break;
 //                case 2:
 //                    // Pie Chart;
 //                    intent = new Intent(getActivity(), PieChartActivity.class);
@@ -107,11 +107,11 @@ public class MainActivity extends ActionBarActivity  {
 //                    intent = new Intent(getActivity(), PreviewColumnChartActivity.class);
 //                    startActivity(intent);
 //                    break;
-                case 2:
-                    // Combo Chart;
-                    intent = new Intent(getActivity(), ComboLineColumnChartActivity.class);
-                    startActivity(intent);
-                    break;
+//                case 1:
+//                    // Combo Chart;
+//                    intent = new Intent(getActivity(), ComboLineColumnChartActivity.class);
+//                    startActivity(intent);
+//                   break;
 //                case 7:
 //                    // Line Column Dependency;
 //                    intent = new Intent(getActivity(), LineColumnDependencyActivity.class);
@@ -146,7 +146,7 @@ public class MainActivity extends ActionBarActivity  {
             List<ChartSampleDescription> list = new ArrayList<MainActivity.ChartSampleDescription>();
 
            list.add(new ChartSampleDescription("Line Chart", "", ChartType.LINE_CHART));
-            list.add(new ChartSampleDescription("Column Chart", "", ChartType.COLUMN_CHART));
+//            list.add(new ChartSampleDescription("Column Chart", "", ChartType.COLUMN_CHART));
 //            list.add(new ChartSampleDescription("Pie Chart", "", ChartType.PIE_CHART));
 //            list.add(new ChartSampleDescription("Bubble Chart", "", ChartType.BUBBLE_CHART));
 //            list.add(new ChartSampleDescription("Preview Line Chart",
@@ -154,8 +154,8 @@ public class MainActivity extends ActionBarActivity  {
 //           list.add(new ChartSampleDescription("Preview Column Chart",
 //                   "Control column chart viewport with another column chart.", ChartType.PREVIEW_COLUMN_CHART));
 
-            list.add(new ChartSampleDescription("Combo Line/Column Chart", "Combo chart with lines and columns.",
-                    ChartType.OTHER));
+//            list.add(new ChartSampleDescription("Combo Line/Column Chart", "Combo chart with lines and columns.",
+//                    ChartType.OTHER));
 //            list.add(new ChartSampleDescription("Line/Column Chart Dependency",
 //                    "LineChart responds(with animation) to column chart value selection.", ChartType.OTHER));
 //            list.add(new ChartSampleDescription(
@@ -209,10 +209,10 @@ public class MainActivity extends ActionBarActivity  {
                     chart = new LineChartView(getContext());
                     holder.chartLayout.addView(chart);
                     break;
-                case COLUMN_CHART:
-                    chart = new ColumnChartView(getContext());
-                    holder.chartLayout.addView(chart);
-                    break;
+//                case COLUMN_CHART:
+//                    chart = new ColumnChartView(getContext());
+//                    holder.chartLayout.addView(chart);
+//                    break;
 //                case PIE_CHART:
 //                    chart = new PieChartView(getContext());
 //                    holder.chartLayout.addView(chart);
@@ -225,10 +225,10 @@ public class MainActivity extends ActionBarActivity  {
 //                    chart = new PreviewLineChartView(getContext());
 //                    holder.chartLayout.addView(chart);
 //                    break;
-                case PREVIEW_COLUMN_CHART:
-                    chart = new PreviewColumnChartView(getContext());
-                    holder.chartLayout.addView(chart);
-                    break;
+//                case PREVIEW_COLUMN_CHART:
+//                    chart = new PreviewColumnChartView(getContext());
+//                    holder.chartLayout.addView(chart);
+//                    break;
                 default:
                     chart = null;
                     holder.chartLayout.setVisibility(View.GONE);
@@ -270,7 +270,7 @@ public class MainActivity extends ActionBarActivity  {
 //    }
 
     public enum ChartType {
-        LINE_CHART, COLUMN_CHART, PREVIEW_COLUMN_CHART, OTHER
+        LINE_CHART,OTHER
     }
 
 
