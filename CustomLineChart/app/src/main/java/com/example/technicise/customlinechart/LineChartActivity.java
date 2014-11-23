@@ -13,10 +13,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import org.achartengine.GraphicalView;
+import org.achartengine.model.SeriesSelection;
+import org.achartengine.model.XYMultipleSeriesDataset;
+
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class LineChartActivity extends ActionBarActivity {
+
+    private GraphicalView mChart;
+    String selectedSeries;
+    SeriesSelection seriesSelection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +48,7 @@ public class LineChartActivity extends ActionBarActivity {
         private LineChartData data;
         private int numberOfLines = 1;
         private int maxNumberOfLines = 4;
-        private int numberOfPoints = 12;
+        private int numberOfPoints = 3;
 
         float[][] randomNumbersTab = new float[maxNumberOfLines][numberOfPoints];
 
@@ -64,6 +75,13 @@ public class LineChartActivity extends ActionBarActivity {
 
             // Generate some randome values.
             generateValues();
+
+            int count = 5;
+            Date[] dt = new Date[5];
+            for (int i = 0; i < count; i++) {
+                GregorianCalendar gc = new GregorianCalendar(2012, 10, i + 1);
+                dt[i] = gc.getTime();
+            }
 
            // generateData();
             toggleLabels();
@@ -166,7 +184,8 @@ public class LineChartActivity extends ActionBarActivity {
         private void generateValues() {
             for (int i = 0; i < maxNumberOfLines; ++i) {
                 for (int j = 0; j < numberOfPoints; ++j) {
-                    randomNumbersTab[i][j] = (float) Math.random() * 100f;
+//                    randomNumbersTab[i][j] = (float) Math.random() * 100f;
+                    randomNumbersTab[i][j] = (float) 20.5;
                 }
             }
         }
@@ -225,6 +244,15 @@ public class LineChartActivity extends ActionBarActivity {
             data = new LineChartData(lines);
 
             if (hasAxes) {
+
+
+                // Creating a dataset to hold each series
+                XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
+
+                Calendar pCalendar_FirstDay = Calendar.getInstance();
+                int nMinDay = pCalendar_FirstDay.getActualMinimum(Calendar.DATE);
+                Date currentDate = pCalendar_FirstDay.getTime();
+
                 Axis axisX = new Axis();
                 Axis axisY = new Axis().setHasLines(true);
                 if (hasAxesNames) {
