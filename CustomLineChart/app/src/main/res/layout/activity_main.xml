@@ -41,17 +41,54 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:layout_weight=".10"
+        android:background="#FFFFFF"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <com.example.technicise.customlinechart.CustomSeekBar
+            android:id="@+id/seekBar0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="99"
+            android:progress="5"
+            android:progressDrawable="@android:color/transparent"
+            android:thumb="@drawable/slider_thumb"
+            android:thumbOffset="6dp"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight=".10"
         android:background="#FFFFFF">
 
         <TextView
-            android:id="@+id/tv_title2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="myCuratio"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center"
 
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="LOW"
+            android:gravity="center" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NORMAL"
+            android:gravity="center" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="HIGH"
+            android:gravity="center" />
 
     </LinearLayout>
 

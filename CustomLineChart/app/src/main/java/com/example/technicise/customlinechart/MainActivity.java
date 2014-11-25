@@ -41,11 +41,50 @@ public class MainActivity extends Activity {
 
     private GraphicalView mChart;
 
+    CustomSeekBar seekbar;
+
+    private float totalSpan = 99;
+
+    private float blueSpan = 33;
+    private float greenSpan = 33;
+    private float yellowSpan = 33;
+
+
+    private ArrayList<ProgressItem> progressItemList;
+    private ProgressItem mProgressItem;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         openChart();
+        seekbar = ((CustomSeekBar) findViewById(R.id.seekBar0));
+
+        initDataToSeekbar();
+    }
+
+    private void initDataToSeekbar() {
+        progressItemList = new ArrayList<ProgressItem>();
+
+        // blue span
+        mProgressItem = new ProgressItem();
+        mProgressItem.progressItemPercentage = (blueSpan / totalSpan) * 100;
+        mProgressItem.color = R.color.blue;
+        progressItemList.add(mProgressItem);
+
+        // green span
+        mProgressItem = new ProgressItem();
+        mProgressItem.progressItemPercentage = ((greenSpan / totalSpan) * 100);
+        mProgressItem.color = R.color.green;
+        progressItemList.add(mProgressItem);
+
+        mProgressItem = new ProgressItem();
+        mProgressItem.progressItemPercentage = (yellowSpan / totalSpan) * 100;
+        mProgressItem.color = R.color.yellow;
+        progressItemList.add(mProgressItem);
+
+        seekbar.initData(progressItemList);
+        seekbar.invalidate();
     }
 
     private void openChart(){
