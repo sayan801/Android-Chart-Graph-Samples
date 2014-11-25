@@ -97,18 +97,14 @@ public class MainActivity extends Activity {
         }
 
         int[] visits = { 20,25,27,21,28};
-        //int[] views = {2200, 2700, 2900, 2800, 3200};
 
         // Creating TimeSeries for Visits
-        TimeSeries visitsSeries = new TimeSeries("Visits");
-
-        // Creating TimeSeries for Views
-        //	TimeSeries viewsSeries = new TimeSeries("Views");
+        TimeSeries visitsSeries = new TimeSeries("BMR Rate");
 
         // Adding data to Visits and Views Series
         for(int i=0;i<dt.length;i++){
             visitsSeries.add(dt[i], visits[i]);
-            //viewsSeries.add(dt[i],views[i]);
+
         }
 
         // Creating a dataset to hold each series
@@ -116,10 +112,6 @@ public class MainActivity extends Activity {
 
         // Adding Visits Series to the dataset
         dataset.addSeries(visitsSeries);
-
-        // Adding Visits Series to dataset
-        //dataset.addSeries(viewsSeries);
-
 
         // Creating XYSeriesRenderer to customize visitsSeries
         XYSeriesRenderer visitsRenderer = new XYSeriesRenderer();
@@ -131,23 +123,17 @@ public class MainActivity extends Activity {
         visitsRenderer.setDisplayChartValues(true);
 
 
-//    	// Creating XYSeriesRenderer to customize viewsSeries
-//    	XYSeriesRenderer viewsRenderer = new XYSeriesRenderer();
-//    	viewsRenderer.setColor(Color.YELLOW);
-//    	viewsRenderer.setPointStyle(PointStyle.CIRCLE);
-//    	viewsRenderer.setFillPoints(true);
-//    	viewsRenderer.setLineWidth(2);
-//    	viewsRenderer.setDisplayChartValues(true);
-
-
-        // Creating a XYMultipleSeriesRenderer to customize the whole chart
         XYMultipleSeriesRenderer multiRenderer = new XYMultipleSeriesRenderer();
 
         multiRenderer.setChartTitle("Body Mass Index");
-        multiRenderer.setMargins(new int[]{0,0,0,0});
+       // multiRenderer.setMargins(new int[]{0,0,0,10});
         multiRenderer.setApplyBackgroundColor(true);
-
-
+        multiRenderer.setPointSize(15);
+        multiRenderer.setLabelsColor(Color.WHITE);
+        multiRenderer.setGridColor(Color.RED);
+        multiRenderer.setMarginsColor(Color.parseColor("#54D66A"));
+        multiRenderer.setYLabelsColor(0,Color.WHITE);
+        multiRenderer.setXLabelsColor(Color.WHITE);
 
         multiRenderer.setXTitle("Days");
 
