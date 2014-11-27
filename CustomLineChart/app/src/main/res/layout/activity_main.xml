@@ -49,7 +49,7 @@
             android:id="@+id/seekBar0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="99"
+            android:max="100"
             android:progress="5"
             android:progressDrawable="@android:color/transparent"
             android:thumb="@drawable/slider_thumb"

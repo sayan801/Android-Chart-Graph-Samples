@@ -101,9 +101,10 @@ public class MainActivity extends Activity {
         // Creating TimeSeries for Visits
         TimeSeries visitsSeries = new TimeSeries("BMR Rate");
 
-        // Adding data to Visits and Views Series
+        // Adding data to Visits Series
         for(int i=0;i<dt.length;i++){
             visitsSeries.add(dt[i], visits[i]);
+
 
         }
 
@@ -125,20 +126,29 @@ public class MainActivity extends Activity {
 
         XYMultipleSeriesRenderer multiRenderer = new XYMultipleSeriesRenderer();
 
-        multiRenderer.setChartTitle("Body Mass Index");
-       // multiRenderer.setMargins(new int[]{0,0,0,10});
+        multiRenderer.setChartTitle("Body Mass Index (BMI)");
+        multiRenderer.setChartTitleTextSize(20);
         multiRenderer.setApplyBackgroundColor(true);
-        multiRenderer.setPointSize(15);
+        multiRenderer.setPointSize(4);
         multiRenderer.setLabelsColor(Color.WHITE);
-        multiRenderer.setGridColor(Color.RED);
+        multiRenderer.setGridColor(Color.WHITE);
         multiRenderer.setMarginsColor(Color.parseColor("#54D66A"));
         multiRenderer.setYLabelsColor(0,Color.WHITE);
         multiRenderer.setXLabelsColor(Color.WHITE);
+        multiRenderer.setAxesColor(Color.TRANSPARENT);
+        multiRenderer.setLabelsTextSize(15);
+
+        multiRenderer.setShowGrid(true);
+        multiRenderer.setShowAxes(true);
+        multiRenderer.setShowGridX(false);
+        multiRenderer.setShowGridY(true);
+        multiRenderer.setShowLabels(true);
 
         multiRenderer.setXTitle("Days");
-
         multiRenderer.setYTitle("Count");
         multiRenderer.setZoomButtonsVisible(true);
+
+
 
         // Adding visitsRenderer and viewsRenderer to multipleRenderer
         // Note: The order of adding dataseries to dataset and renderers to multipleRenderer
