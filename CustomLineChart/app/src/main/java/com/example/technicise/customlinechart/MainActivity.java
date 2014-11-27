@@ -52,6 +52,7 @@ public class MainActivity extends Activity {
 
     private ArrayList<ProgressItem> progressItemList;
     private ProgressItem mProgressItem;
+    String selectedSeries;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,7 +97,7 @@ public class MainActivity extends Activity {
             dt[i] = gc.getTime();
         }
 
-        int[] visits = { 20,25,27,21,28};
+        float [] visits = {(float) 20.50, (float) 25.75,(float) 25.5,(float) 15.5,(float) 35.5};
 
         // Creating TimeSeries for Visits
         TimeSeries visitsSeries = new TimeSeries("BMR Rate");
@@ -160,26 +161,27 @@ public class MainActivity extends Activity {
         LinearLayout chartContainer = (LinearLayout) findViewById(R.id.chart_container);
 
         // Creating a Time Chart
-        mChart = (GraphicalView) ChartFactory.getTimeChartView(getBaseContext(), dataset, multiRenderer, "dd-MMM-yyyy");
+        mChart = (GraphicalView) ChartFactory.getTimeChartView(getBaseContext(), dataset, multiRenderer, "dd-MM-yyyy");
 
         multiRenderer.setClickEnabled(true);
-        multiRenderer.setSelectableBuffer(10);
+        multiRenderer.setSelectableBuffer(15);
 
         // Setting a click event listener for the graph
         mChart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Format formatter = new SimpleDateFormat("dd-MM");
+                Format formatter = new SimpleDateFormat("dd-MM-yyyy");
 
                 SeriesSelection seriesSelection = mChart.getCurrentSeriesAndPoint();
 
                 if (seriesSelection != null) {
                     int seriesIndex = seriesSelection.getSeriesIndex();
-                    String selectedSeries="Visits";
+
+                    selectedSeries="BMR Rate";
                     if(seriesIndex==0)
-                        selectedSeries = "Visits";
+                        selectedSeries = "BMR Rate";
                     else
-                        selectedSeries = "Views";
+                        selectedSeries = "BMR Rate";
 
                     // Getting the clicked Date ( x value )
                     long clickedDateSeconds = (long) seriesSelection.getXValue();
@@ -187,7 +189,8 @@ public class MainActivity extends Activity {
                     String strDate = formatter.format(clickedDate);
 
                     // Getting the y value
-                    int amount = (int) seriesSelection.getValue();
+                 //   int amount = (int) seriesSelection.getValue();
+                    float amount = (float) seriesSelection.getValue();
 
                     // Displaying Toast Message
                     Toast.makeText(
