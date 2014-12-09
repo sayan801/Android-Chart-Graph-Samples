@@ -97,7 +97,10 @@ public class SimpleXYPlotActivity extends Activity
             series1Format.configure(getApplicationContext(),
                     R.xml.line_point_formatter_with_plf1);
             // add a new series' to the xyplot:
-            mySimpleXYPlot.addSeries(series1, series1Format);
+            //mySimpleXYPlot.addSeries(series1, series1Format);
+
+            MyLineAndPointFormatter format = new MyLineAndPointFormatter();
+            mySimpleXYPlot.addSeries(series1, format);
 
 
 
